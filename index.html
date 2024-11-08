@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online MPG Calculator</title>
+  
+  <!-- Internal CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .calculator-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      width: 350px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background-image: url('image.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.95;
+    }
+    /* Watermark background image */
+    .calculator-container::before {
+      content: "";
+      background-image: url('image.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+    .calculator-container h1 {
+      font-size: 1.8em;
+      color: #00509E;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .calculator-container label {
+      display: block;
+      font-weight: bold;
+      color: #003566;
+      margin: 10px 0 5px;
+      font-size: 1.1em;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .calculator-container input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 4px;
+      border: 1px solid #bbb;
+      background-color: rgba(255, 255, 255, 0.8);
+      font-size: 1em;
+    }
+    .calculator-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #FF6B6B;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .calculator-container button:hover {
+      background-color: #FF4C4C;
+    }
+    .result {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #009688;
+      margin-top: 15px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .calculator-info {
+      font-size: 1em;
+      color: #003566;
+      margin-bottom: 10px;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="calculator-container">
+  <!-- Additional Information at the Top -->
+  <div class="calculator-info">This calculator is used to calculate miles per gallon. Design by Kelvin Creative</div>
+  
+  <!-- Online MPG calculator -->
+  <h1>Online MPG Calculator</h1>
+  
+  <label for="milesTraveled">Miles Traveled:</label>
+  <input type="number" id="milesTraveled" placeholder="Enter miles traveled">
+
+  <label for="gallonsOfGas">Gallons of Gas Used:</label>
+  <input type="number" id="gallonsOfGas" placeholder="Enter gallons used">
+  
+  <button onclick="calculateMPG()">Calculate MPG</button>
+  
+  <div class="result" id="result"></div>
+</div>
+
+<!-- JavaScript code in a separate block -->
+<script>
+  function calculateMPG() {
+    // Get input values
+    const milesTraveled = parseFloat(document.getElementById("milesTraveled").value);
+    const gallonsOfGas = parseFloat(document.getElementById("gallonsOfGas").value);
+
+    // Validate inputs
+    if (isNaN(milesTraveled) || isNaN(gallonsOfGas) || gallonsOfGas <= 0) {
+      document.getElementById("result").innerText = "Please enter valid numbers.";
+      return;
+    }
+
+    // Calculate miles per gallon
+    const milesPerGallon = milesTraveled / gallonsOfGas;
+    
+    // Display the result
+    document.getElementById("result").innerText = `Miles per Gallon: ${milesPerGallon.toFixed(2)}`;
+  }
+</script>
+
+</body>
+</html>
